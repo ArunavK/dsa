@@ -1,0 +1,2 @@
+MmergeSort	mergeSort.c	/^int main() {$/
+sort	mergeSort.c	/^int* sort(int* arr, int n) {$/

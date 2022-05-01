@@ -3,7 +3,6 @@
 int search(int, int*, int);
 
 int main() {
-
   int n;
   printf("Enter no. of inputs: ");
   scanf("%d", &n);
