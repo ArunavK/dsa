@@ -16,20 +16,40 @@ int main() {
   }
   
   int* sortedarr;
-  sortedarr = (int*) malloc(n * sizeof(int));
+  sortedarr = sort(arr, n);
 
   for(int i=0; i<n; i=i+1) {
-    printf("%d", sortedarr[i]);
+    printf("%d ", sortedarr[i]);
   }
+  printf("\n");
 
   return 0;
 }
 
 int* sort(int* arr, int n) {
 
-  if(n>2) {
-    int* left = (int*) malloc(n/2 * sizeof(int));
-    int* right = (int*) malloc((n - n/2) * sizeof(int));
+  int* left;
+  int* right;
+  int* sortedarr;
+
+  if (n == 1) {
+    return arr;
+  }
+  if (n == 2) {
+    sortedarr = (int*) calloc(2, sizeof(int));
+    if (arr[0] < arr[1]) {
+      sortedarr[0] = arr[0];
+      sortedarr[1] = arr[1];
+    } else {
+      sortedarr[0] = arr[1];
+      sortedarr[1] = arr[0];
+    }
+    return sortedarr;
+
+  } else {
+
+    left = (int*) malloc(n/2 * sizeof(int));
+    right = (int*) malloc((n - n/2) * sizeof(int));
 
     for(int i=0; i<n/2; i++) {
       left[i] = arr[i];
@@ -41,24 +61,30 @@ int* sort(int* arr, int n) {
 
     left = sort(left, n/2);
     right = sort(right, n - n/2);
-  } else {
-    left = arr[0];
-    right = arr[1];
-  }
 
-  int* sortedarr = (int*) calloc(n, sizeof(int));
+  } 
+
+  sortedarr = (int*) calloc(n, sizeof(int));
 
   int left_idx = 0;
   int right_idx = 0;
 
   for(int i=0; i<n; i++) {
     if(left_idx < n/2 && right_idx < (n-n/2)) {
-      sortedarr[i] = (left[left_idx] < right[right_idx]) ? left[left_idx] : right[right_idx];
+      if (left[left_idx] < right[right_idx]) {
+        sortedarr[i] = left[left_idx];
+        left_idx++;
+      } else {
+        sortedarr[i] = right[right_idx];
+        right_idx++;
+      }
     }
     else if(left_idx >= n/2) {
       sortedarr[i] = right[right_idx]; 
-    } else
-    
+    } else {
+      sortedarr[i] = left[left_idx]; 
+    }
+   
   }
 
   free(left);
