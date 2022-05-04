@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int search(int, int*, int);
+int searchsorted(int, int*, int);
 
 int main() {
   int n;
