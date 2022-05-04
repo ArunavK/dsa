@@ -21,7 +21,6 @@ int main() {
   for(int i=0; i<n; i=i+1) {
     printf("%d ", sortedarr[i]);
   }
-  printf("\n");
 
   return 0;
 }
@@ -59,29 +58,18 @@ int* sort(int* arr, int n) {
 
     left = sort(left, n/2);
     right = sort(right, n - n/2);
-<<<<<<< HEAD:merge-sort/mergeSort.c
   } else {
     left[0] = arr[0];
     right[0] = arr[1];
   }
 
-=======
-
-  } 
-
-  sortedarr = (int*) calloc(n, sizeof(int));
->>>>>>> 006c86613be4555cdf88377b28c365f7f145721a:lib/mergeSort.c
 
   int left_idx = 0;
   int right_idx = 0;
 
   for(int i=0; i<n; i++) {
     if(left_idx < n/2 && right_idx < (n-n/2)) {
-<<<<<<< HEAD:merge-sort/mergeSort.c
       if(left[left_idx] < right[right_idx]) {
-=======
-      if (left[left_idx] < right[right_idx]) {
->>>>>>> 006c86613be4555cdf88377b28c365f7f145721a:lib/mergeSort.c
         sortedarr[i] = left[left_idx];
         left_idx++;
       } else {
@@ -91,19 +79,12 @@ int* sort(int* arr, int n) {
     }
     else if(left_idx >= n/2) {
       sortedarr[i] = right[right_idx]; 
-<<<<<<< HEAD:merge-sort/mergeSort.c
       right_idx++;
     } else {
       sortedarr[i] = left[left_idx];
       left_idx++;
     }
     
-=======
-    } else {
-      sortedarr[i] = left[left_idx]; 
-    }
-   
->>>>>>> 006c86613be4555cdf88377b28c365f7f145721a:lib/mergeSort.c
   }
 
   free(left);
